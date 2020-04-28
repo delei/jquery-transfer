@@ -87,8 +87,8 @@ $('#container').transfer({
    </tr>
 </table>
 
-## 致谢原作者
 
-author : shixinke <ishixinke@qq.com>
-
-github : [源仓库](https://github.com/shixinke/jquery-transfer)
+## 致谢
+shixinke jquery-transfer: [Github Repo](https://github.com/shixinke/jquery-transfer)
+nekolr jquery-transfer:[Github Repo](https://github.com/nekolr/jquery-transfer)
+bootstrap-transfer: [Github Repo](https://github.com/rabihkodeih/bootstrap-transfer)
