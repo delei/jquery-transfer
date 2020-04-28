@@ -2,34 +2,30 @@
 
 一个使用jquery实现的穿梭框插件
 
-## 文档目录
-
-- [插件效果](#插件效果)
-- [插件基本用法](#插件基本用法)
-- [插件参数](#插件参数)
-- [致谢](#致谢)
-- [作者](#作者)
-
-
 ## 插件效果
 
-基本用法：
+demo：
 
 ![基本用法](https://github.com/shixinke/jquery-transfer/blob/master/screenshots/basic.png)
 
-选项过滤：
+## 更新内容
 
-![选项过滤](https://github.com/shixinke/jquery-transfer/blob/master/screenshots/search.png)
+- [x] 调整了仓库文件夹目录
+- [x] 更新升级基础依赖插件的版本，满足目前常用的最低版
+- [x] 更新bootstrap后，默认图标修改为Glyphicons
+- [x] 更新bootstrap后，修复样式兼容问题
+- [x] 增强查询功能(前端查询)，支持模糊字查询
 
 ## 插件依赖
+对原作者的依赖进行了版本更新升级
 
-- jquery
-- bootstrap（依赖bootstrap部分样式）
+- jquery v1.12.4
+- bootstrap v3.3.7
 
 ## 插件基本用法
 
     $('#container').transfer({
-		soruce:'#source',
+		    soruce:'#source',
         target:'#target'
     });
 
@@ -88,13 +84,8 @@
    </tr>
 </table>
 
-## 致谢
-
-- 插件样式采用了ElementUI的穿梭框插件样式
-- 感谢bootstrap-transfer插件为开发提供了思路
-
-## 作者
+## 致谢原作者
 
 author : shixinke <ishixinke@qq.com>
 
-website : [http://www.shixinke.com](http://www.shixinke.com)
+website : [源仓库](https://github.com/shixinke/jquery-transfer)

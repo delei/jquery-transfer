@@ -219,9 +219,9 @@
         'sourceTitle':'列表1',
         'target': 'select:last',
         'targetTitle':'列表2',
-        'iconPrefix':'iconfont',
-        'iconSearch':'icon-search',
-        'iconLeft':'icon-arrow-left',
-        'iconRight':'icon-arrow-right'
+        'iconPrefix':'glyphicon',
+        'iconSearch':'glyphicon-search',
+        'iconLeft':'glyphicon-arrow-left',
+        'iconRight':'glyphicon-arrow-right'
     }
 })(jQuery);
