@@ -1,12 +1,12 @@
 # jquery transfer
 
-一个使用jquery实现的穿梭框插件
+一个使用jquery,基于普通select元素实现的穿梭框，左右双列表插件
 
 ## 插件效果
 
 demo：
 
-![基本用法](https://github.com/shixinke/jquery-transfer/blob/master/screenshots/basic.png)
+![基本用法](./doc/basic.png)
 
 ## 更新内容
 
@@ -24,10 +24,12 @@ demo：
 
 ## 插件基本用法
 
-    $('#container').transfer({
-		    soruce:'#source',
-        target:'#target'
-    });
+```javascript
+$('#container').transfer({
+    soruce:'#source',
+    target:'#target'
+});
+```
 
 ## 插件参数
 
@@ -65,22 +67,22 @@ demo：
     <tr>
        <td>iconPrefix</td>
        <td>字体图标前缀</td>
-       <td>iconfont</td>
+       <td>glyphicon</td>
    </tr>
    <tr>
        <td>iconSearch</td>
        <td>搜索图标</td>
-       <td>icon-search</td>
+       <td>glyphicon-search</td>
    </tr>
    <tr>
        <td>iconLeft</td>
        <td>向左图标</td>
-       <td>icon-arrow-left</td>
+       <td>glyphicon-arrow-left</td>
    </tr>
    <tr>
        <td>iconRgiht</td>
        <td>向右图标</td>
-       <td>icon-arrow-right</td>
+       <td>glyphicon-arrow-right</td>
    </tr>
 </table>
 
