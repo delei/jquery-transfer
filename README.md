@@ -90,5 +90,7 @@ $('#container').transfer({
 
 ## 致谢
 shixinke jquery-transfer: [Github Repo](https://github.com/shixinke/jquery-transfer)
+
 nekolr jquery-transfer:[Github Repo](https://github.com/nekolr/jquery-transfer)
+
 bootstrap-transfer: [Github Repo](https://github.com/rabihkodeih/bootstrap-transfer)
