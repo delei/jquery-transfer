@@ -2,6 +2,8 @@
 
 A jQuery plugin that is a shuttle box.Base on Bootstrap framework
 
+[中文说明](https://github.com/delei/jquery-transfer/blob/master/README_CN.md)
+
 ## Demo
 
 demo：`demo.html`
