@@ -2,14 +2,14 @@
   jQuery Transfer v1.0.0
  * Licensed under the LGPL v3.0 license
  */
-(function($){
+(function($) {
     function Transfer(selector, options) {
         this.selector = selector;
         this.options = options;
         this.sourceItemList = [];
         this.targetItemList = [];
     }
-    Transfer.prototype.init = function(){
+    Transfer.prototype.init = function() {
         if (this.options.source.substr(0, 1) == '#') {
             var $source = $(this.options.source);
         } else {
@@ -19,9 +19,9 @@
             throw new Error('the source selector not found');
             return false;
         }
-		this.options.formName = $source.attr('name');
+        this.options.formName = $source.attr('name');
         var self = this;
-        $source.find('option').each(function(){
+        $source.find('option').each(function() {
             var obj = {};
             obj.value = $(this).val();
             obj.text = $(this).text();
@@ -31,38 +31,37 @@
                 self.sourceItemList.push(obj);
             }
         });
-
     };
     $.fn.transfer = function(options) {
         var settings = $.extend({}, $.fn.transfer.defaults, options);
         var _this;
-        return this.each(function(){
+        return this.each(function() {
             _this = $(this);
             var transfer = new Transfer(_this, settings);
             transfer.init();
             var template = $.fn.transfer.defaults.template.
-			    replace('{{name}}', transfer.options.formName).
-                replace('{{sourceTitle}}', settings.sourceTitle).
-                replace('{{targetTitle}}', settings.targetTitle).
-                replace(/\{\{iconPrefix}}/g, settings.iconPrefix).
-                replace(/\{\{iconSearch}}/g, settings.iconSearch).
-                replace(/\{\{iconLeft}}/g, settings.iconLeft).
-                replace(/\{\{iconRight}}/g, settings.iconRight).
-                replace('{{sourceCount}}', transfer.sourceItemList.length).
-                replace('{{targetCount}}', transfer.targetItemList.length);
+            replace('{{name}}', transfer.options.formName).
+            replace('{{sourceTitle}}', settings.sourceTitle).
+            replace('{{targetTitle}}', settings.targetTitle).
+            replace(/\{\{iconPrefix}}/g, settings.iconPrefix).
+            replace(/\{\{iconSearch}}/g, settings.iconSearch).
+            replace(/\{\{iconLeft}}/g, settings.iconLeft).
+            replace(/\{\{iconRight}}/g, settings.iconRight).
+            replace('{{sourceCount}}', transfer.sourceItemList.length).
+            replace('{{targetCount}}', transfer.targetItemList.length);
             var $html = $(template);
             var sourceHtml = '';
             var targetHtml = '';
-            for (var i=0; i< transfer.sourceItemList.length; i++) {
+            for (var i = 0; i < transfer.sourceItemList.length; i++) {
                 sourceHtml += settings.itemTpl.replace(/\{\{value\}\}/g, transfer.sourceItemList[i].value).replace(/\{\{text\}\}/g, transfer.sourceItemList[i].text);
             }
-            for (var i=0; i< transfer.targetItemList.length; i++) {
+            for (var i = 0; i < transfer.targetItemList.length; i++) {
                 targetHtml += settings.itemTpl.replace(/\{\{value\}\}/g, transfer.targetItemList[i].value).replace(/\{\{text\}\}/g, transfer.targetItemList[i].text);
             }
             $html.find('.transfer-left-panel .transfer-panel-list').append(sourceHtml);
             $html.find('.transfer-right-panel .transfer-panel-list').append(targetHtml);
             _this.html($html.html());
-			_this.$hidden = $('#transfer-hidden');
+            _this.$hidden = $('#transfer-hidden');
             _this.$sourcePanel = _this.find('.transfer-left-panel');
             _this.$targetPanel = _this.find('.transfer-right-panel');
             _this.$filterInput = _this.find('.transfer-panel-filter :input');
@@ -95,8 +94,8 @@
                 } else {
                     $btn.attr('disabled', true);
                 }
-				var values = [];
-                _this.$targetSelect.find(':checkbox').each(function(){
+                var values = [];
+                _this.$targetSelect.find(':checkbox').each(function() {
                     values.push($(this).val());
                 });
                 _this.$hidden.val(values.join(','));
@@ -104,39 +103,43 @@
                 parent.find('.transfer-item-count').text(checkboxLength);
             }
 
-            _this.$filterInput.keyup(function(){
+            //查询事件
+            _this.$filterInput.keyup(function() {
                 var value = $(this).val();
                 var $itemList = $(this).parents('.transfer-panel').find('.transfer-panel-list')
                 $itemList.find('.transfer-panel-item').show();
                 if (value != '') {
-                    $itemList.find(".transfer-panel-item").each(function(){
-                        if($(this).attr("data-text").indexOf(value) < 0){
+                    $itemList.find(".transfer-panel-item").each(function() {
+                        if ($(this).attr("data-text").indexOf(value) < 0) {
                             $(this).hide();
                         }
                     });
                 }
             });
 
-            _this.$checkAllInput.click(function(){
-                var $parent = $(this).parents('.transfer-panel');
-                var $checkboxs = $parent.find('.transfer-panel-list .transfer-panel-item :checkbox');
+            //全选
+            _this.$checkAllInput.click(function() {
+                var $parent = $(this).parents(".transfer-panel");
+                var $checkboxs = $parent.find(".transfer-panel-list .transfer-panel-item input[type='checkbox']");
                 if ($(this).prop('checked')) {
-                    $checkboxs.attr('checked', true);
+                    $checkboxs.prop('checked', true);
+                    $checkboxs.attr('checked','checked');
                 } else {
-                    $checkboxs.attr('checked', false);
+                    $checkboxs.prop('checked', false);
+                    $checkboxs.removeAttr('checked');
                 }
                 checkBtnStatus($parent);
             });
 
-            _this.on('click', '.transfer-panel-body .checkbox-input :checkbox', function(){
+            _this.on('click', '.transfer-panel-body .checkbox-input :checkbox', function() {
                 var $parent = $(this).parents('.transfer-panel');
                 checkBtnStatus($parent)
             });
 
-            _this.$addBtn.click(function(){
+            _this.$addBtn.click(function() {
                 var $checkedBoxs = _this.$sourcePanel.find('.transfer-panel-list .transfer-panel-item :checkbox:checked');
                 var html = '';
-                $checkedBoxs.each(function(){
+                $checkedBoxs.each(function() {
                     var $parent = $(this).parents('.transfer-panel-item');
                     html += $parent.prop("outerHTML");
                     $parent.remove();
@@ -145,10 +148,10 @@
                 checkBtnStatus(_this.$sourcePanel);
                 checkBtnStatus(_this.$targetPanel);
             });
-            _this.$removeBtn.click(function(){
+            _this.$removeBtn.click(function() {
                 var $checkedBoxs = _this.$targetPanel.find('.transfer-panel-list .transfer-panel-item :checkbox:checked');
                 var html = '';
-                $checkedBoxs.each(function(){
+                $checkedBoxs.each(function() {
                     var $parent = $(this).parents('.transfer-panel-item');
                     html += $parent.prop("outerHTML");
                     $parent.remove();
@@ -161,8 +164,7 @@
         });
     };
     $.fn.transfer.defaults = {
-        'template':                                         
-            '<div class="transfer">\
+        'template': '<div class="transfer">\
                  <input type="hidden" id="transfer-hidden" name="{{name}}">\
                  <div class="transfer-item pull-left ">\
                      <div class="transfer-panel transfer-left-panel">\
@@ -187,8 +189,8 @@
                  </div>\
                  <div class="transfer-item pull-left">\
                      <div class="transfer-buttons">\
-                        <button type="button" disabled="disabled" class="btn btn-default btn-add-item"><span><i class="{{iconPrefix}} {{iconRight}}"></i></span></button>\
-                        <button type="button" disabled="disabled" class="btn btn-default btn-del-item"><span><i class="{{iconPrefix}} {{iconLeft}}"></i></span></button>\
+                        <button type="button" disabled="disabled" class="btn btn-primary btn-add-item"><span><i class="{{iconPrefix}} {{iconRight}}"></i></span></button>\
+                        <button type="button" disabled="disabled" class="btn btn-primary btn-del-item"><span><i class="{{iconPrefix}} {{iconLeft}}"></i></span></button>\
                      </div>\
                  </div>\
                  <div class="transfer-item pull-left">\
@@ -213,7 +215,7 @@
                      </div>\
                  </div>\
             </div>',
-        'itemTpl':'<label class="transfer-panel-item" data-text="{{text}}" data-value="{{value}}">\
+        'itemTpl': '<label class="transfer-panel-item" data-text="{{text}}" data-value="{{value}}">\
                        <span class="checkbox-input pull-left">\
                            <input type="checkbox" class="checkbox-inline" value="{{value}}">\
                        </span>\
@@ -222,12 +224,12 @@
                        </span>\
                    </label>',
         'source': 'select:first',
-        'sourceTitle':'列表1',
+        'sourceTitle': '列表1',
         'target': 'select:last',
-        'targetTitle':'列表2',
-        'iconPrefix':'glyphicon',
-        'iconSearch':'glyphicon-search',
-        'iconLeft':'glyphicon-arrow-left',
-        'iconRight':'glyphicon-arrow-right'
+        'targetTitle': '列表2',
+        'iconPrefix': 'glyphicon',
+        'iconSearch': 'glyphicon-search',
+        'iconLeft': 'glyphicon-arrow-left',
+        'iconRight': 'glyphicon-arrow-right'
     }
 })(jQuery);
