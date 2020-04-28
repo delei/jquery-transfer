@@ -6,7 +6,7 @@
 
 demo：
 
-![基本用法](./doc/basic.png)
+![基本用法](https://github.com/delei/jquery-transfer/blob/master/doc/demo.jpg)
 
 ## 更新内容
 
@@ -90,4 +90,4 @@ $('#container').transfer({
 
 author : shixinke <ishixinke@qq.com>
 
-website : [源仓库](https://github.com/shixinke/jquery-transfer)
+github : [源仓库](https://github.com/shixinke/jquery-transfer)
