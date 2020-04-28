@@ -10,7 +10,7 @@ demo：`demo.html`
 
 ![base use](https://github.com/delei/jquery-transfer/blob/master/doc/demo.jpg)
 
-## update
+## Update
 
 - [x] update folder
 - [x] upgrade jQuery and Bootstrap
@@ -18,8 +18,9 @@ demo：`demo.html`
 - [x] fix css issues
 - [x] update search function
 - [x] fix checkbox issues
+- [x] add dist
 
-## plugins
+## Dependency Plugins
 
 - jQuery v1.12.4
 - bootstrap v3.3.7
@@ -33,7 +34,7 @@ $('#container').transfer({
 });
 ```
 
-## options
+## Options
 
 <table>
    <tr>
