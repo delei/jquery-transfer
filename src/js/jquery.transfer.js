@@ -1,4 +1,7 @@
-/*! jquery-transfer 穿梭框组件 License LGPL  http://github.com/shixinke/jquery-transfer By 诗心客 version:1.0 */
+/*!
+  jQuery Transfer v1.0.0
+ * Licensed under the LGPL v3.0 license
+ */
 (function($){
     function Transfer(selector, options) {
         this.selector = selector;
