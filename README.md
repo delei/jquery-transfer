@@ -15,6 +15,7 @@ demo：`demo.html`
 - [x] 更新bootstrap后，默认图标修改为Glyphicons
 - [x] 更新bootstrap后，修复样式兼容问题
 - [x] 增强查询功能(前端查询)，支持模糊字查询
+- [x] 修复checkbox多次点击全选无效的问题
 
 ## 插件依赖
 对原作者的依赖进行了版本更新升级
