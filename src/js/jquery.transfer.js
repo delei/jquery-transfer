@@ -104,10 +104,13 @@
             _this.$filterInput.keyup(function(){
                 var value = $(this).val();
                 var $itemList = $(this).parents('.transfer-panel').find('.transfer-panel-list')
-                if (value == '') {
-                    $itemList.find('.transfer-panel-item').show();
-                } else {
-                    $itemList.find(".transfer-panel-item:not([data-text*='" + value + "'])").hide();
+                $itemList.find('.transfer-panel-item').show();
+                if (value != '') {
+                    $itemList.find(".transfer-panel-item").each(function(){
+                        if($(this).attr("data-text").indexOf(value) < 0){
+                            $(this).hide();
+                        }
+                    });
                 }
             });
 
