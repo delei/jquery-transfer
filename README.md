@@ -1,10 +1,10 @@
-# jquery transfer
+# jQuery Transfer
 
-一个使用jquery,基于普通select元素实现的穿梭框，左右双列表插件
+一个使用jQuery,基于普通select元素实现的穿梭框，左右双列表插件
 
 ## 插件效果
 
-demo：
+demo：`demo.html`
 
 ![基本用法](https://github.com/delei/jquery-transfer/blob/master/doc/demo.jpg)
 
@@ -19,7 +19,7 @@ demo：
 ## 插件依赖
 对原作者的依赖进行了版本更新升级
 
-- jquery v1.12.4
+- jQuery v1.12.4
 - bootstrap v3.3.7
 
 ## 插件基本用法
